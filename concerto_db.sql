@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2024 at 01:16 PM
+-- Generation Time: Jun 28, 2024 at 01:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -169,7 +169,8 @@ INSERT INTO `concerts` (`id`, `name`, `date`, `venue`, `description`, `image_url
 (92, 'Sahid Live Intimate Concert with Iwan Fals & Band', '2024-06-22', 'Sahid Raya Hotel & Convention Yogyakarta', 'Mengusung konsep tema \'Sahid Intimate Live in Concert with Iwan Fals\', konser ini bertujuan untuk membawa para penonton bernostalgia dan menikmati lagu-lagu legendaris Iwan Fals. Dilengkapi dengan fasilitas Grand Ballroom berkapasitas 1.500 penonton yang nyaman dengan kualitas standar fasilitas hotel bintang 4, konser ini akan menampilkan panggung megah yang memungkinkan penonton menikmati pertunjukan dengan mudah.', 'Iwan Fals12.png', 22),
 (93, 'SMAVENSARY', '2024-06-29', 'Asha Akasa, Yogyakarta', 'Smavensary merupakan event tahunan SMAN 7 Yogyakarta untuk memperingati ulang tahun sekolah. Dalam rangka merayakan Lustrum ke-8, Smavensary tahun ini dibuka untuk umum. Dengan konsep “Diversity in Unity”, Smavensary 2024 bertujuan membawa keberagaman yang ada untuk menumbuhkan rasa persatuan di sekitar kita. Acara ini akan menampilkan pertunjukan dari penampil internal SMAN 7 Yogyakarta dan bintang tamu.', 'SMAVENSARY14.png', 22),
 (94, 'Jurasik Fest 2024', '2024-09-08', 'Stadion Mandala Krida', 'Jurasik Fest kembali merayakan tahun ke-3 dengan penuh semangat pada tahun 2024! Setelah dua tahun sukses menyelenggarakan acara, festival ini kembali dengan format yang lebih menarik dan beragam. Tahun ini, pengunjung akan dimanjakan dengan berbagai pengalaman tak terlupakan, mulai dari penampilan panggung yang spektakuler hingga kegiatan interaktif yang menghibur.\n\nSetelah sukses menghadirkan Tulus dan Kunto Aji pada tahun 2022, serta Maliq & D’Essentials, Nadin Amizah, Sal Priadi, dan Coldiac pada tahun 2023, Jurasik Fest 2024 akan mempersembahkan deretan artis nasional yang akan menghibur dan memukau penonton. Tahun ini, Jurasik Fest kembali menggembirakan dengan mengundang bintang tamu yang tak kalah menarik dari sebelumnya.', 'Jurasik Fest9.jpeg', 22),
-(95, 'Ndeso Run & Fun', '2024-08-25', 'Candi Banyunibo, Yogyakarta', 'Halo Runners, Ndeso Run & Fun akan hadir untuk mewarnai hari-hari di kehidupan kamu! Yuk, persiapkan dirimu untuk mengikuti Ndeso Run & Fun 2024 dengan keluarga maupun teman-teman kamu! Detail kegiatan akan kami umumkan segera, jadi jangan lupa untuk nyalakan notifikasi kamu biar nggak ketinggalan informasi terbaru dari kami. Jangan lupa untuk rajin latihan dan jaga kesehatan selalu! Ndeso Run & Fun 2024 \"Hidup sehat bersama kalian.\" \nPERIODE PENDAFTARAN:\n27 April 2024 - 23 Juni 2024. \nHARI & TANGGAL PELAKSANAAN: \nMinggu, 23 Juni 2024.', 'Ndeso Run Fun10.jpeg', 22);
+(95, 'Ndeso Run & Fun', '2024-08-25', 'Candi Banyunibo, Yogyakarta', 'Halo Runners, Ndeso Run & Fun akan hadir untuk mewarnai hari-hari di kehidupan kamu! Yuk, persiapkan dirimu untuk mengikuti Ndeso Run & Fun 2024 dengan keluarga maupun teman-teman kamu! Detail kegiatan akan kami umumkan segera, jadi jangan lupa untuk nyalakan notifikasi kamu biar nggak ketinggalan informasi terbaru dari kami. Jangan lupa untuk rajin latihan dan jaga kesehatan selalu! Ndeso Run & Fun 2024 \"Hidup sehat bersama kalian.\" \nPERIODE PENDAFTARAN:\n27 April 2024 - 23 Juni 2024. \nHARI & TANGGAL PELAKSANAAN: \nMinggu, 23 Juni 2024.', 'Ndeso Run Fun10.jpeg', 22),
+(100, 'anjay gacor', '2024-06-30', 'jember', 'gacor kang', '', 24);
 
 -- --------------------------------------------------------
 
@@ -225,7 +226,8 @@ INSERT INTO `concert_artists` (`concert_id`, `artist_id`) VALUES
 (93, 324),
 (93, 325),
 (94, 301),
-(95, 326);
+(95, 326),
+(100, 293);
 
 -- --------------------------------------------------------
 
@@ -268,7 +270,8 @@ INSERT INTO `concert_genres` (`concert_id`, `genre_id`) VALUES
 (92, 66),
 (93, 66),
 (94, 66),
-(95, 66);
+(95, 66),
+(100, 66);
 
 -- --------------------------------------------------------
 
@@ -383,7 +386,8 @@ INSERT INTO `tickets` (`id`, `concert_id`, `type`, `price`) VALUES
 (128, 92, 'VIP', 1200000),
 (129, 93, 'Batch 1', 50000),
 (130, 93, 'Batch 2', 60000),
-(131, 94, 'Presale 1', 145000);
+(131, 94, 'Presale 1', 145000),
+(140, 100, 'vvvvvip', 1000000);
 
 -- --------------------------------------------------------
 
@@ -552,9 +556,34 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `full_name`, `email`, `phone_number`, `password`, `role_id`, `created_at`, `updated_at`) VALUES
-(20, 'Kimi Dandy Yudanarko', 'akun1@gmail.com', '085210035577', '$2b$10$MSg2oNhqgSp4.J.W0WvfE.Tuyhh259FRZ.LNjYfm/yUHZn8OInsIS', 1, '2024-06-23 05:11:48', '2024-06-25 11:04:55'),
+(20, 'Kimi Dandy Yudanarko', 'akun1@gmail.com', '085210035577', '$2b$10$wyAROrrGWH874dA3uuRv9OkghFeaCIQs1Mw..T.cMwJZoGHUpoOa.', 1, '2024-06-23 05:11:48', '2024-06-28 09:51:22'),
 (21, 'Lina Liliana', 'akun2@gmail.com', '085210035578', '$2b$10$pWH0X3HGRfOvMTguQQQC5uoZT2qTnaB6idDhgeQLHniO08BOCtm6e', 1, '2024-06-23 05:13:43', '2024-06-25 11:05:05'),
-(22, 'Kenzie Dandy Tanarko', 'akun3@gmail.com', '085210035579', '$2b$10$lE7rAPj4QDIEVZ1/0GePkeduPZb87mRxQBk0JjtAUZOcNwKw6KH9C', 2, '2024-06-25 09:22:36', '2024-06-25 11:05:13');
+(22, 'Kenzie Dandy Tanarko', 'akun3@gmail.com', '085210035579', '$2b$10$lE7rAPj4QDIEVZ1/0GePkeduPZb87mRxQBk0JjtAUZOcNwKw6KH9C', 2, '2024-06-25 09:22:36', '2024-06-25 11:05:13'),
+(24, 'Kai Cenat', 'akun4@gmail.com', '085210035567', '$2b$10$VrgzdeZSb9SmIh5blsPcmuyFI5tTbDrqFosbDEFl3Rc.2IgnL.ky6', 2, '2024-06-28 10:50:00', '2024-06-28 10:50:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_details`
+--
+
+CREATE TABLE `user_details` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `bio` varchar(255) DEFAULT NULL,
+  `favorite` varchar(255) DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
+  `province` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `gender` enum('male','female') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_details`
+--
+
+INSERT INTO `user_details` (`id`, `user_id`, `bio`, `favorite`, `birthdate`, `province`, `city`, `gender`) VALUES
+(7, 24, 'aku suka jkt49', NULL, NULL, 'Jawa Timur', 'Jember', NULL);
 
 --
 -- Indexes for dumped tables
@@ -662,6 +691,13 @@ ALTER TABLE `users`
   ADD KEY `role_id` (`role_id`);
 
 --
+-- Indexes for table `user_details`
+--
+ALTER TABLE `user_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -693,7 +729,7 @@ ALTER TABLE `chatmessages`
 -- AUTO_INCREMENT for table `concerts`
 --
 ALTER TABLE `concerts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `genres`
@@ -711,7 +747,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT for table `transactionitems`
@@ -729,13 +765,19 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `userpreferences`
 --
 ALTER TABLE `userpreferences`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `user_details`
+--
+ALTER TABLE `user_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -807,6 +849,12 @@ ALTER TABLE `userpreferences`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+
+--
+-- Constraints for table `user_details`
+--
+ALTER TABLE `user_details`
+  ADD CONSTRAINT `user_details_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

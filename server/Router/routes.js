@@ -1,8 +1,8 @@
 const express = require('express');
-const { Register, RegisterSeller, SavePreferences, Login } = require('../Controller/user');
+const { Register, RegisterSeller, SavePreferences, Login, getProfile, updateProfile,getFavorites,changePassword } = require('../Controller/user');
 const { getGenres } = require('../Controller/genres');
 const { getArtists } = require('../Controller/artists');
-const { getAllConcerts, getConcertById, getRecommendedConcerts, createConcert, upload } = require('../Controller/concerts');
+const { getAllConcerts, getConcertById, getRecommendedConcerts, getRecommendedLandingConcerts, createConcert, getConcertsBySeller, upload } = require('../Controller/concerts');
 const { getUserById, saveTransaction } = require('../Controller/transactions');
 const { getAllData, getFriends } = require('../Controller/friends');
 const { getMessages, sendMessage, getUserById: getChatUserById } = require('../Controller/chat');
@@ -18,8 +18,10 @@ router.get('/genres', getGenres);
 router.get('/artists', getArtists);
 router.get('/concerts', getAllConcerts);
 router.get('/concerts/recommended', getRecommendedConcerts);
+router.get('/concerts/recommendedLanding', getRecommendedLandingConcerts);
 router.get('/concerts/:id', getConcertById);
 router.post('/createConcert', upload.single('imageData'), createConcert);
+router.get('/seller/concerts', getConcertsBySeller);
 router.get('/user', getUserById);
 router.post('/saveTransaction', saveTransaction);
 router.get('/alldata', getAllData);
@@ -28,6 +30,10 @@ router.post('/cart', addToCart);
 router.get('/cart', getCartItems);
 router.delete('/cart/:id', deleteCartItem);
 router.put('/cart/:id', updateCartItemQuantity); 
+router.get('/profile', getProfile);
+router.post('/profile', updateProfile);
+router.get('/favorites', getFavorites);
+router.post('/change-password', changePassword);
 
 // Chat routes
 router.get('/chat/messages', getMessages);

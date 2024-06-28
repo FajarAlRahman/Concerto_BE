@@ -92,6 +92,28 @@ const getRecommendedConcerts = async (req, res) => {
     }
 };
 
+const getRecommendedLandingConcerts = async (req, res) => {
+    try {
+        const concertNames = ["Sheila on 7", "WESTLIFE", "Rhapsody Nusantara", "Jogja Mix Music"];
+
+        let queryStr = `
+            SELECT concerts.*, MAX(tickets.price) as max_price 
+            FROM concerts 
+            LEFT JOIN tickets ON concerts.id = tickets.concert_id 
+            WHERE concerts.name IN (?)
+            GROUP BY concerts.id 
+            ORDER BY FIELD(concerts.name, ?)
+        `;
+
+        const recommendedConcerts = await query(queryStr, [concertNames, concertNames]);
+        res.json(recommendedConcerts);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Gagal mengambil data rekomendasi konser untuk landing page" });
+    }
+};
+
+
 const createConcert = async (req, res) => {
     const { name, venue, date, genre, artist, description, seller_id, categories } = req.body;
 
@@ -148,6 +170,30 @@ const createConcert = async (req, res) => {
     }
 };
 
+const getConcertsBySeller = async (req, res) => {
+    const userId = req.session.userId;
+
+    if (!userId) {
+        return res.status(401).json({ error: "User not authenticated" });
+    }
+
+    try {
+        const concerts = await query(`
+            SELECT concerts.*, MAX(tickets.price) as max_price 
+            FROM concerts 
+            LEFT JOIN tickets ON concerts.id = tickets.concert_id 
+            WHERE concerts.seller_id = ?
+            GROUP BY concerts.id 
+            ORDER BY concerts.date ASC
+        `, [userId]);
+        res.json(concerts);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Gagal mengambil data konser" });
+    }
+};
+
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'client/public/assets/img');
@@ -163,6 +209,8 @@ module.exports = {
     getAllConcerts,
     getConcertById,
     getRecommendedConcerts,
+    getRecommendedLandingConcerts,
+    getConcertsBySeller,
     createConcert,
     upload,
 };
